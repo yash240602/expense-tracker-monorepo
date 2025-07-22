@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Profile from '../pages/Profile';
-import Home from '../pages/Home';
 import Spends from '../pages/Spends';
+import Login from '../pages/Login';
+import SignUp from '../pages/SignUp';
+import TabNavigator from './TabNavigator';
 
 export type RootStackParamList = {
-  Home: undefined;
-  Profile: undefined;
+  Login: undefined;
+  SignUp: undefined;
+  Main: undefined;
   Spends: undefined;
 };
 
@@ -17,24 +19,14 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Login"
         screenOptions={{
           headerShown: false,
           animation: 'slide_from_right',
         }}>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          name="Profile"
-          component={Profile}
-          options={{
-            headerShown: true,
-            headerTitle: 'Profile',
-            headerShadowVisible: false,
-            headerStyle: {
-              backgroundColor: 'transparent',
-            },
-          }}
-        />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Main" component={TabNavigator} />
         <Stack.Screen name="Spends" component={Spends} />
       </Stack.Navigator>
     </NavigationContainer>
